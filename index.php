@@ -7,16 +7,7 @@
 
 //connect to the database
 include("config.php");
-
-//try to connect to the database
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully";
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
+$conn = connectDB();
 
 // 2. Prepare and execute the query
 $sql = "SELECT username FROM users LIMIT 1";
