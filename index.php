@@ -9,15 +9,12 @@
 include("config.php");
 $conn = connectDB();
 
-// 2. Prepare and execute the query
-$sql = "SELECT username FROM users LIMIT 1";
-$stmt = $conn->query($sql);
+// Check if the user is logged in
+include("pages/database-check/auth_check.php");
+checkAuth();
 
-// 3. Fetch the result
-$userPseudo = null;
-if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    $userPseudo = $row['username'];
-}
+// Get the user's pseudo from the session
+$userPseudo = isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Invité';
 
 ?>
 
@@ -27,11 +24,19 @@ if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             <div class="col-md-12">
                 <h1 class="text-center">Accueil - <?php echo $userPseudo ?></h1>
                 <p class="text-center">Utilisez le menu pour naviguer entre les différentes sections.</p>
+                <p class="text-center">Dernière vidéo full-value :</p>
+                <div class="video-container align-items-center d-flex justify-content-center">
+                    <iframe width="860" height="415" src="https://www.youtube.com/embed/3dFkXZ5myYk?si=657kAfZgevgNP8IR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-
+<style>
+    iframe {
+        margin-top: 1rem;
+    }
+</style>
 
 <?php include("includes/footer.php"); ?>

@@ -30,14 +30,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 // Check if user exists
                 if ($user) {
-                    // Verify password (assuming plain text for now - see security note below)
-                    if ($password === $user['password']) {
+                    // Verify hashed password
+                    if (password_verify($password, $user['password'])) {
                         // User authenticated successfully
                         session_start();
                         $_SESSION['user_id'] = $user['id'];
                         $_SESSION['username'] = $user['username'];
 
-                        echo "Login successful! Welcome " . htmlspecialchars($user['username']);
                         // Redirect to dashboard or home page
                         header("Location: ../index.php");
                         exit();
