@@ -4,6 +4,7 @@
 
 <?php
 
+
 //connect to the database
 include("config.php");
 
@@ -18,13 +19,13 @@ try {
 }
 
 // 2. Prepare and execute the query
-$sql = "SELECT pseudo FROM users LIMIT 1";
+$sql = "SELECT username FROM users LIMIT 1";
 $stmt = $conn->query($sql);
 
 // 3. Fetch the result
 $userPseudo = null;
 if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    $userPseudo = $row['pseudo'];
+    $userPseudo = $row['username'];
 }
 
 ?>

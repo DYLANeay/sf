@@ -13,10 +13,7 @@
                     <a class="nav-link" href="/sf-log/pages/log.php">Log</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/sf-log/pages/graphs.php">Graphs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/sf-log/pages/login.php">Connexion</a>
+                    <a class="nav-link" href="/sf-log/pages/login.php">Login</a>
                 </li>
             </ul>
         </div>
